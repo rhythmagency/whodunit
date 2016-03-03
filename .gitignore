@@ -1,0 +1,42 @@
+# Node modules.
+node_modules/
+
+# Folder created by NuGet.
+**/App_Data/NuGetBackup/
+
+# Visual Studio packages.
+**/packages/*/
+
+# Visual Studio build artifacts.
+bin/
+obj/
+
+# Grunt build artifacts.
+dist/
+frontendDocs/
+
+# Visual Studio solution user options.
+*.suo
+.vs/
+
+# Visual Studio project user options.
+*.csproj.user
+
+# WebStorm.
+.idea
+
+# Temporary test folders.
+/source/
+/dest/
+
+# Generated config files.
+web.config
+applications.config
+ClientDependency.config
+Dashboard.config
+trees.config
+
+# Website temp folders
+Website/cache/
+Website/Logs/
+Website/TEMP/
