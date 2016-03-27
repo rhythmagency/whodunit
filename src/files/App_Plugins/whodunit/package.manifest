@@ -1,0 +1,5 @@
+{
+  "javascript": [
+    "~/App_Plugins/whodunit/whodunit.controller.js" 
+  ]
+}

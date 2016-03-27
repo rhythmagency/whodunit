@@ -1,10 +1,6 @@
 ﻿namespace Whodunit.app.Models {
 
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Umbraco.Core.Persistence;
     using Umbraco.Core.Persistence.DatabaseAnnotations;
 
@@ -12,7 +8,7 @@
     [PrimaryKey(HistoryItem.PrimaryKeyName, autoIncrement = true)]
     public class HistoryItem {
 
-        public const string TableName = "Whodunit.HistoryItem";
+        public const string TableName = "[whodunit].[dbo].[Whodunit.HistoryItem]";
         public const string PrimaryKeyName = "AutoId";
 
         [PrimaryKeyColumn(AutoIncrement = true, Clustered = true)]

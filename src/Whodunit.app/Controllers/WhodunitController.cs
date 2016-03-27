@@ -5,27 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Whodunit.app.Controllers {
+namespace Whodunit.app.Controllers
+{
+    using System.Data.SqlTypes;
+    using Umbraco.Web.Mvc;
 
-    public class WhodunitController : Umbraco.Web.Mvc.SurfaceController {
-
-        public ActionResult GetHistory(DateTime? start, DateTime? stop) {
-            DateTime actualStart = start.HasValue ? start.Value : DateTime.MinValue;
-            DateTime actualStop = stop.HasValue ? stop.Value : DateTime.MaxValue;
+    [PluginController("Whodunit")]
+    public class WhodunitController : Umbraco.Web.Mvc.SurfaceController
+    {
+        /// <summary>
+        /// Returns log as CSV
+        /// </summary>
+        /// <param name="start">Date range start</param>
+        /// <param name="stop">Date range stop</param>
+        /// <returns></returns>
+        public ActionResult GetHistory(DateTime? start, DateTime? stop)
+        {
+            DateTime actualStart = start.HasValue ? start.Value : SqlDateTime.MinValue.Value;
+            DateTime actualStop = stop.HasValue ? stop.Value : SqlDateTime.MaxValue.Value;
 
             var items = HistoryHelper.GetHistoryItems(actualStart, actualStop);
 
             StringBuilder result = new StringBuilder();
 
-            // TODO: add logic here to actually write out history items
+            result.AppendLine($"Timestamp,Message");
+            items.ForEach(x => result.AppendLine($"{x.Timestamp},\"{x.Message}\""));
 
             return File(
                 Encoding.UTF8.GetBytes(result.ToString()),
                 "text/csv",
-                "AuditTrail-" + actualStart.ToShortDateString() + "-" + actualStop.ToShortDateString() + ".csv"
+                "AuditTrail-" + actualStart.ToShortDateString() + "_" + actualStop.ToShortDateString() + ".csv"
             );
-        } // end method
+        }
 
-    } // end class
+    }
 
-} // end namespace
+}

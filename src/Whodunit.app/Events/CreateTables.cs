@@ -24,7 +24,7 @@ namespace Whodunit.app.Events {
                     db.CreateTable<T>(false);
             }
             catch (Exception ex) {
-                LogHelper.Error<CreateTables>("Unable to create table UserTypePermissions.", ex);
+                LogHelper.Error<CreateTables>($"Unable to create table {tableName}.", ex);
             }
         }
 

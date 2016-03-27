@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Umbraco.Core;
-using Umbraco.Core.Models;
-using Umbraco.Core.Auditing;
 using Umbraco.Core.Persistence;
 using Whodunit.app.Models;
 
 namespace Whodunit.app {
+    using System.Data;
+    using System.Data.SqlClient;
 
     public class HistoryHelper {
 
@@ -19,16 +17,16 @@ namespace Whodunit.app {
             _sqlHelper = ApplicationContext.Current.DatabaseContext.Database;
         }
 
-        public static HistoryItem GetHistoryItem(long autoId) {
-            return _sqlHelper.Fetch<HistoryItem>(
-                "select * from " + HistoryItem.TableName + " where AutoId = @0",
-                autoId).FirstOrDefault();
+        public static HistoryItem GetHistoryItem(long autoId)
+        {
+            return _sqlHelper.SingleOrDefault<HistoryItem>(autoId);
         }
 
-        public static List<HistoryItem> GetHistoryItems(DateTime startDate, DateTime endDate) {
-            return _sqlHelper.Fetch<HistoryItem>(
-                "select * from " + HistoryItem.TableName + " where Timestamp >= @0 and Timestamp <= @1 order by Timestamp",
-                startDate, endDate);
+        public static List<HistoryItem> GetHistoryItems(DateTime startDate, DateTime endDate)
+        {
+            return _sqlHelper.Fetch<HistoryItem>($"SELECT * FROM {HistoryItem.TableName} WHERE Timestamp>=@0 AND Timestamp<=@1", 
+                new SqlParameter() { DbType = DbType.DateTime, Value = startDate},
+                new SqlParameter() { DbType = DbType.DateTime, Value = endDate});
         }
 
         public static void AddHistoryItem(string message) {
