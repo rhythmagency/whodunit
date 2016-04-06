@@ -26,6 +26,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "files", "files\", "{48861EA
 		SlnRelativePath = "files\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whodunit.test", "Whodunit.test\Whodunit.test.csproj", "{CCE90E80-8C43-45C5-A42C-D0D7DFB15D8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{48861EAD-5903-4667-9973-3AAAC67493C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48861EAD-5903-4667-9973-3AAAC67493C5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{48861EAD-5903-4667-9973-3AAAC67493C5}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{CCE90E80-8C43-45C5-A42C-D0D7DFB15D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE90E80-8C43-45C5-A42C-D0D7DFB15D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE90E80-8C43-45C5-A42C-D0D7DFB15D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE90E80-8C43-45C5-A42C-D0D7DFB15D8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
