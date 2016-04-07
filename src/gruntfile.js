@@ -4,7 +4,8 @@ module.exports = function(grunt) {
     var appProject = "Whodunit.app";
     var website = "Whodunit.test";
     var binaries = ["Whodunit.app.dll", "Whodunit.app.pdb"];
-    var temp = "./WhodunitTemp/package/";
+    var tempBase = "./WhodunitTemp";
+    var tempPackage = tempBase + "/package";
 
     // Initialize Grunt tasks.
     grunt.initConfig({
@@ -29,13 +30,13 @@ module.exports = function(grunt) {
                         // Frontend files.
                         expand: true,
                         src: ["App_Plugins/**"],
-                        dest: temp,
+                        dest: tempPackage + "/",
                         cwd: appProject + "/"
                     }, {
                         // App binaries.
                         expand: true,
                         src: binaries,
-                        dest: temp + "bin/",
+                        dest: tempPackage + "/bin/",
                         cwd: appProject + "/bin/Release/"
                     }
                 ]
@@ -45,13 +46,13 @@ module.exports = function(grunt) {
             main: {
                 src: [
                     // Temporary folder for intermediate build artifacts.
-                    "./WhodunitTemp"
+                    tempBase
                 ]
             }
         },
         umbracoPackage: {
             main: {
-                src: "./files",
+                src: tempPackage,
                 dest: "../dist",
                 options: {
                     name: "Whodunit",
@@ -88,6 +89,6 @@ module.exports = function(grunt) {
         [ "clean:main", "copy:main", "clean:main" ]);
     grunt.registerTask("package",
         // The "package" task will create an Umbraco package of Whodunit.
-        [ "clean:main", "copy:package", "clean:main" ]);
+        [ "clean:main", "copy:package", "umbracoPackage:main", "clean:main" ]);
 
 };

@@ -46,3 +46,6 @@ obj/
 !**/Website/Views/Partials/
 !**/Website/Views/Partials/Grid/
 !**/Website/Views/Partials/Grid/Editors/
+
+# Grunt build artifacts.
+dist/
