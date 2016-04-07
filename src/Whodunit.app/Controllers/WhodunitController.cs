@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace Whodunit.app.Controllers
+﻿namespace Whodunit.app.Controllers
 {
+    using System;
     using System.Data.SqlTypes;
+    using System.Text;
+    using System.Web.Mvc;
     using Umbraco.Web.Mvc;
 
     [PluginController("Whodunit")]
     public class WhodunitController : Umbraco.Web.Mvc.SurfaceController
     {
+
         /// <summary>
         /// Returns log as CSV
         /// </summary>
