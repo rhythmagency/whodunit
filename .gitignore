@@ -38,8 +38,9 @@ obj/
 **/Whodunit.test/App_Data/umbraco.config
 **/Whodunit.test/App_Data/Umbraco.sdf
 **/Whodunit.test/App_Data/cache/
-**/Website/Views/*
-**/Website/Views/Partials/*
+**/Whodunit.test/Views/*
+**/Whodunit.test/Views/Partials/*
+**/WhodunitTemp/
 
 # Allow some views.
 !**/Website/Views/Partials/
