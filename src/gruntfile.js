@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
     // Initialize Grunt tasks.
     grunt.initConfig({
-        "pkg": grunt.file.readJSON('package.json'),
+        "pkg": grunt.file.readJSON("package.json"),
         copy: {
             // Main is used to copy files to the sample website.
             main: {
@@ -65,10 +65,19 @@ module.exports = function(grunt) {
                     manifest: "templates/package.template.xml"
                 }
             }
+        },
+        wait: {
+            // Useful for creating a slight delay between tasks to confirm they are actually happening.
+            second: {
+                options: {
+                    delay: 1000
+                }
+            }
         }
     });
 
     // Load NPM tasks.
+    grunt.loadNpmTasks("grunt-wait");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-umbraco-package");
