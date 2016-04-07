@@ -1,11 +1,28 @@
-﻿<div ng-controller="Rhythm.WhodunitController">
-
-    <div class="row">
-        <h3>Generate Report of Events</h3>
-        <p>Click the button below to download a CSV of Umbraco event history</p>
-        <div class="umb-control-group">
-            <button class="btn btn-primary" ng-click="getHistory()">Download</button>
+﻿<div class="umb-pane">
+    <div class="rhythm-csv-event-reports" ng-controller="Rhythm.WhodunitController">
+        <div>
+            <h2>Generate Report of History</h2>
+        </div>
+        <hr />
+        <div>
+            <strong>Start Date</strong>
+            <umb-editor model="startDate"></umb-editor>
+            <br />
+        </div>
+        <div>
+            <strong>End Date</strong>
+            <umb-editor model="endDate"></umb-editor>
+            <br />
+        </div>
+        <div>
+            <button class="btn btn-primary" type="button" ng-click="generateCsv()" ng-disabled="disableGenerateButton">Generate Report</button>
+        </div>
+        <div ng-if="disableGenerateButton">
+            <p>Please wait while the report is generated. This may take a moment.</p>
+        </div>
+        <br /><br />
+        <div ng-if="showLink">
+            <a href="{{csvUrl}}">Download Report</a>
         </div>
     </div>
-
 </div>

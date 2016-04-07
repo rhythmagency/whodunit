@@ -29,6 +29,7 @@ obj/
 **/Whodunit.test/App_Data/TEMP/
 **/Whodunit.test/App_Data/Logs/
 **/Whodunit.test/App_Data/packages/
+**/Whodunit.test/App_Data/Models/
 **/Whodunit.test/media/
 **/Whodunit.test/App_Plugins/
 **/Whodunit.test/scripts/
@@ -41,6 +42,7 @@ obj/
 **/Whodunit.test/Views/*
 **/Whodunit.test/Views/Partials/*
 **/WhodunitTemp/
+**/GeneratedReports/
 
 # Allow some views.
 !**/Website/Views/Partials/

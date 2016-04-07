@@ -1,22 +1,49 @@
-﻿namespace Whodunit.app.Models {
+﻿namespace Whodunit.app.Models
+{
 
+    // Namespaces.
     using System;
     using Umbraco.Core.Persistence;
     using Umbraco.Core.Persistence.DatabaseAnnotations;
 
+
+    /// <summary>
+    /// A history entry to track an event (e.g., the publish event for a content node).
+    /// </summary>
     [TableName(TableName)]
     [PrimaryKey(PrimaryKeyName, autoIncrement = true)]
-    public class HistoryItem {
+    public class HistoryItem
+    {
 
-        public const string TableName = "[Whodunit.HistoryItem]";
+        #region Constants
+
+        public const string TableName = "WhodunitHistoryItem";
         public const string PrimaryKeyName = "AutoId";
 
-        [PrimaryKeyColumn(AutoIncrement = true, Clustered = true)]
-        public ulong AutoId { get; set; }
+        #endregion
 
+
+        #region Properties
+
+        /// <summary>
+        /// The primary key.
+        /// </summary>
+        [PrimaryKeyColumn(AutoIncrement = true, Clustered = true)]
+        public long AutoId { get; set; }
+
+
+        /// <summary>
+        /// The timestamp of the event.
+        /// </summary>
         public DateTime Timestamp { get; set; }
 
+
+        /// <summary>
+        /// The messaage containing details for the event.
+        /// </summary>
         public string Message { get; set; }
+
+        #endregion
 
     }
 

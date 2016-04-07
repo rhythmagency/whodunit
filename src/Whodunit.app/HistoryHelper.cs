@@ -1,35 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using Umbraco.Core;
-using Umbraco.Core.Persistence;
-using Whodunit.app.Models;
+﻿namespace Whodunit.app
+{
 
-namespace Whodunit.app {
-    using System.Data;
-    using System.Data.SqlClient;
+    // Namespaces.
+    using System;
+    using System.Collections.Generic;
+    using Umbraco.Core;
+    using Umbraco.Core.Persistence;
+    using Whodunit.app.Models;
 
-    public class HistoryHelper {
+
+    /// <summary>
+    /// Helps with history items in the database.
+    /// </summary>
+    public class HistoryHelper
+    {
+
+        #region Variables
 
         private static Database _sqlHelper;
 
-        static HistoryHelper() {
+        #endregion
+
+
+        #region Constructors
+
+        /// <summary>
+        /// Static constructor.
+        /// </summary>
+        static HistoryHelper()
+        {
             _sqlHelper = ApplicationContext.Current.DatabaseContext.Database;
         }
 
-        public static HistoryItem GetHistoryItem(long autoId)
-        {
-            return _sqlHelper.SingleOrDefault<HistoryItem>(autoId);
-        }
+        #endregion
 
+
+        #region Methods
+
+        /// <summary>
+        /// Gets all history items in the specified date range from the database.
+        /// </summary>
+        /// <param name="startDate">
+        /// The start of the date range, inclusive.
+        /// </param>
+        /// <param name="endDate">
+        /// The end of the date range, exclusive.
+        /// </param>
+        /// <returns>
+        /// The history items.
+        /// </returns>
         public static List<HistoryItem> GetHistoryItems(DateTime startDate, DateTime endDate)
         {
-            return _sqlHelper.Fetch<HistoryItem>($"SELECT * FROM {HistoryItem.TableName} WHERE Timestamp>=@0 AND Timestamp<=@1",
-                new SqlParameter() { DbType = DbType.DateTime, Value = startDate},
-                new SqlParameter() { DbType = DbType.DateTime, Value = endDate});
+            var query = $"SELECT * FROM {HistoryItem.TableName} WHERE Timestamp >= @0 AND Timestamp < @1";
+            return _sqlHelper.Fetch<HistoryItem>(query, startDate, endDate);
         }
 
-        public static void AddHistoryItem(string message) {
-            HistoryItem newItem = new HistoryItem() {
+
+        /// <summary>
+        /// Adds a history item to the databse.
+        /// </summary>
+        /// <param name="message">
+        /// The message to add to the history item.
+        /// </param>
+        public static void AddHistoryItem(string message)
+        {
+            HistoryItem newItem = new HistoryItem()
+            {
                 Message = message,
                 Timestamp = DateTime.Now
             };
@@ -40,6 +76,8 @@ namespace Whodunit.app {
                 newItem
             );
         }
+
+        #endregion
 
     }
 
