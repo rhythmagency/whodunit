@@ -90,7 +90,7 @@ module.exports = function(grunt) {
     // Register Grunt tasks.
     grunt.registerTask("default",
         // The "default" task is for general development of Whodunit.
-        [ "clean:main", "copy:main", "clean:main" ]);
+        [ "copy:main" ]);
     grunt.registerTask("package",
         // The "package" task will create an Umbraco package of Whodunit.
         [ "clean:main", "copy:package", "umbracoPackage:main", "clean:main" ]);
