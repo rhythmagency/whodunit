@@ -3,18 +3,7 @@ module.exports = function(grunt) {
     // Initialize Grunt tasks.
     grunt.initConfig({
         "pkg": grunt.file.readJSON('package.json'),
-/*		uglify: {
-			options: {
-				// the banner is inserted at the top of the output
-				banner: ''
-			},
-			dist: {
-				files: {
-					'files/App_Plugins/Whodunit/plugin.min.js': [ 'files/App_Plugins/Whodunit/plugin.js' ]
-				}
-			}
-		},*/
-		umbracoPackage: {
+        umbracoPackage: {
             main: {
                 src: "./files",
                 dest: "../dist",
@@ -34,12 +23,11 @@ module.exports = function(grunt) {
     });
 
     // Load NPM tasks.
-    grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-umbraco-package");
 
     // Register Grunt tasks.
     grunt.registerTask("default",
         // The "default" task is for general development of ReadingAge.
-        [ "uglify:dist", "umbracoPackage:main" ]);
+        [ "umbracoPackage:main" ]);
 
 };
