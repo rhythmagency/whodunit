@@ -144,6 +144,6 @@ namespace Whodunit.app.Events
         private string GetContentSignatures(IEnumerable<IMedia> items) => items.Select(GetContentSignature).Aggregate((curr, next) => curr + ListSeparator + next);
         #endregion
 
-    } 
+    }
 
-} 
+}
