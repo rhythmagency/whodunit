@@ -11,10 +11,6 @@ node_modules/
 bin/
 obj/
 
-# Grunt build artifacts.
-dist/
-frontendDocs/
-
 # Visual Studio solution user options.
 *.suo
 .vs/
@@ -25,18 +21,27 @@ frontendDocs/
 # WebStorm.
 .idea
 
-# Temporary test folders.
-/source/
-/dest/
+# Sample website files/folders.
+**/Whodunit.test/bin/
+**/Whodunit.test/obj/
+**/Whodunit.test/umbraco/
+**/Whodunit.test/umbraco_client/
+**/Whodunit.test/App_Data/TEMP/
+**/Whodunit.test/App_Data/Logs/
+**/Whodunit.test/App_Data/packages/
+**/Whodunit.test/media/
+**/Whodunit.test/App_Plugins/
+**/Whodunit.test/scripts/
+**/Whodunit.test/js/
+**/Whodunit.test/css/
+**/Whodunit.test/App_Data/access.config
+**/Whodunit.test/App_Data/umbraco.config
+**/Whodunit.test/App_Data/Umbraco.sdf
+**/Whodunit.test/App_Data/cache/
+**/Website/Views/*
+**/Website/Views/Partials/*
 
-# Generated config files.
-web.config
-applications.config
-ClientDependency.config
-Dashboard.config
-trees.config
-
-# Website temp folders
-Website/cache/
-Website/Logs/
-Website/TEMP/
+# Allow some views.
+!**/Website/Views/Partials/
+!**/Website/Views/Partials/Grid/
+!**/Website/Views/Partials/Grid/Editors/
