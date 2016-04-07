@@ -25,7 +25,12 @@
   <DictionaryItems />
   <Languages />
   <DataTypes />
-  <Actions/>
+  <Actions>
+    <Action
+      runat="install" undo="false" alias="Whodunit.TransformXmlFile"
+      installTransform="~/App_Plugins/whodunit/Transforms/dashboard.config.install.xdt"
+      uninstallTransform="~/App_Plugins/whodunit/Transforms/dashboard.config.uninstall.xdt"
+      file="~/Config/Dashboard.config" />
   <files>
     <% files.forEach(function(file) { %>
     <file>

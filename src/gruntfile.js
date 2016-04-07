@@ -3,7 +3,11 @@ module.exports = function(grunt) {
     // Variables.
     var appProject = "Whodunit.app";
     var website = "Whodunit.test";
-    var binaries = ["Whodunit.app.dll", "Whodunit.app.pdb"];
+    var binaries = [
+        "Whodunit.app.dll",
+        "Whodunit.app.pdb",
+        "Microsoft.Web.XmlTransform.dll"
+    ];
     var tempBase = "./WhodunitTemp";
     var tempPackage = tempBase + "/package";
 
