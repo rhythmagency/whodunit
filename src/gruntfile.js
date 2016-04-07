@@ -41,6 +41,14 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        clean: {
+            main: {
+                src: [
+                    // Temporary folder for intermediate build artifacts.
+                    "./WhodunitTemp"
+                ]
+            }
+        },
         umbracoPackage: {
             main: {
                 src: "./files",
@@ -61,15 +69,16 @@ module.exports = function(grunt) {
     });
 
     // Load NPM tasks.
+    grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-umbraco-package");
 
     // Register Grunt tasks.
     grunt.registerTask("default",
         // The "default" task is for general development of Whodunit.
-        [ "copy:main" ]);
+        [ "clean:main", "copy:main", "clean:main" ]);
     grunt.registerTask("package",
         // The "package" task will create an Umbraco package of Whodunit.
-        [ "copy:package" ]);
+        [ "clean:main", "copy:package", "clean:main" ]);
 
 };
