@@ -8,8 +8,7 @@
     [PrimaryKey(HistoryItem.PrimaryKeyName, autoIncrement = true)]
     public class HistoryItem {
 
-        //TODO: Why was it this?: "[whodunit].[dbo].[Whodunit.HistoryItem]";
-        public const string TableName = "[whodunit].[dbo].[Whodunit.HistoryItem]";
+        public const string TableName = "[Whodunit.HistoryItem]";
         public const string PrimaryKeyName = "AutoId";
 
         [PrimaryKeyColumn(AutoIncrement = true, Clustered = true)]
