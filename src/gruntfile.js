@@ -6,7 +6,10 @@ module.exports = function(grunt) {
     var binaries = [
         "Whodunit.app.dll",
         "Whodunit.app.pdb",
-        "Microsoft.Web.XmlTransform.dll"
+        "Microsoft.Web.XmlTransform.dll",
+        "CsvHelper.dll",
+        "CsvHelper.pdb",
+        "CsvHelper.xml"
     ];
     var tempBase = "./WhodunitTemp";
     var tempPackage = tempBase + "/package";
@@ -60,7 +63,7 @@ module.exports = function(grunt) {
                 dest: "../dist",
                 options: {
                     name: "Whodunit",
-                    version: "0.2.1",
+                    version: "0.2.2",
                     url: "https://github.com/rhythmagency/whodunit",
                     license: "MIT License",
                     licenseUrl: "http://opensource.org/licenses/MIT",
