@@ -31,6 +31,7 @@
       installTransform="~/App_Plugins/whodunit/Transforms/dashboard.config.install.xdt"
       uninstallTransform="~/App_Plugins/whodunit/Transforms/dashboard.config.uninstall.xdt"
       file="~/Config/Dashboard.config" />
+  </Actions>
   <files>
     <% files.forEach(function(file) { %>
     <file>
