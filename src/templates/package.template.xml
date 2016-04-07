@@ -25,7 +25,6 @@
   <DictionaryItems />
   <Languages />
   <DataTypes />
-  <!--<control></control>-->
   <Actions/>
   <files>
     <% files.forEach(function(file) { %>
