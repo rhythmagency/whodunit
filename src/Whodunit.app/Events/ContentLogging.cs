@@ -55,7 +55,7 @@ namespace Whodunit.app.Events
 
         private void MediaService_EmptiedRecycleBin(IMediaService sender, Umbraco.Core.Events.RecycleBinEventArgs e)
         {
-            HistoryHelper.AddHistoryItem(GetUserSignature(CurrentUser) + " emptied the recycle bin, permanently deleting media item with the following ids: " + e.Ids.Select(i => i.ToString()).Aggregate((curr, next) => curr + ListSeparator + next));
+            HistoryHelper.AddHistoryItem(GetUserSignature(CurrentUser) + " emptied the recycle bin, permanently deleting media items with the following ids: " + e.Ids.Select(i => i.ToString()).Aggregate((curr, next) => curr + ListSeparator + next));
         }
 
         private void MediaService_Deleted(IMediaService sender, Umbraco.Core.Events.DeleteEventArgs<IMedia> e)
