@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Persistence;
 using Whodunit.app.Models;
@@ -24,7 +23,7 @@ namespace Whodunit.app {
 
         public static List<HistoryItem> GetHistoryItems(DateTime startDate, DateTime endDate)
         {
-            return _sqlHelper.Fetch<HistoryItem>($"SELECT * FROM {HistoryItem.TableName} WHERE Timestamp>=@0 AND Timestamp<=@1", 
+            return _sqlHelper.Fetch<HistoryItem>($"SELECT * FROM {HistoryItem.TableName} WHERE Timestamp>=@0 AND Timestamp<=@1",
                 new SqlParameter() { DbType = DbType.DateTime, Value = startDate},
                 new SqlParameter() { DbType = DbType.DateTime, Value = endDate});
         }
@@ -42,6 +41,6 @@ namespace Whodunit.app {
             );
         }
 
-    } // end class
+    }
 
-} // end namespace
+}
