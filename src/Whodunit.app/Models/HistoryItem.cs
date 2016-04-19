@@ -41,6 +41,7 @@
         /// <summary>
         /// The messaage containing details for the event.
         /// </summary>
+        [Length(4000)]
         public string Message { get; set; }
 
         #endregion
