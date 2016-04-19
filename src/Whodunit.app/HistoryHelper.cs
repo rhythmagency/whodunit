@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
     using Umbraco.Core;
+    using Umbraco.Core.Logging;
     using Umbraco.Core.Persistence;
     using Whodunit.app.Models;
 
@@ -64,17 +65,52 @@
         /// </param>
         public static void AddHistoryItem(string message)
         {
-            HistoryItem newItem = new HistoryItem()
+
+            // Variables.
+            var now = DateTime.Now;
+            var parts = new List<string>();
+
+
+            // Split message into parts to avoid SQL errors.
+            for (var i = 0; i < message.Length; i += 3000)
             {
-                Message = message,
-                Timestamp = DateTime.Now
-            };
-            _sqlHelper.Insert(
-                HistoryItem.TableName,
-                HistoryItem.PrimaryKeyName,
-                true,
-                newItem
-            );
+                var length = Math.Min(3000, i - message.Length);
+                var part = message.Substring(i, length);
+                if (parts.Count > 0)
+                {
+                    part = "(Truncated message continued) " + part;
+                }
+                parts.Add(part);
+            }
+
+
+            // Log each message part.
+            for (var i = 0; i < parts.Count; i++)
+            {
+                HistoryItem newItem = new HistoryItem()
+                {
+                    Message = parts[i],
+                    Timestamp = now
+                };
+
+
+                // Attempt to insert history message.
+                try
+                {
+                    _sqlHelper.Insert(
+                        HistoryItem.TableName,
+                        HistoryItem.PrimaryKeyName,
+                        true,
+                        newItem
+                    );
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error<HistoryHelper>("Error inserting history message.", ex);
+                }
+
+            }
+
         }
 
         #endregion
