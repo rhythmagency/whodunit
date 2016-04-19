@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                 dest: "../dist",
                 options: {
                     name: "Whodunit",
-                    version: "0.2.2",
+                    version: "0.2.3",
                     url: "https://github.com/rhythmagency/whodunit",
                     license: "MIT License",
                     licenseUrl: "http://opensource.org/licenses/MIT",
