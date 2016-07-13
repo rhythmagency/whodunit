@@ -172,7 +172,12 @@
 
         private User CurrentUser => umbraco.helper.GetCurrentUmbracoUser();
 
-        private string GetUserSignature(User source) => source.Name + " (" + source.Email + ")";
+        private string GetUserSignature(User source)
+        {
+            return source == null
+                ? "unknown user"
+                : source.Name + " (" + source.Email + ")";
+        }
 
         private string GetContentSignature(IContent item)
         {
