@@ -1,4 +1,4 @@
-﻿namespace Whodunit.app.Events
+﻿namespace Whodunit.Events
 {
 
     // Namespaces.
@@ -11,7 +11,7 @@
     using Umbraco.Core.Publishing;
     using Umbraco.Core.Services;
     using Umbraco.Web;
-    using static Whodunit.app.ExtensionMethods.CollectionExtensionMethods;
+    using static Whodunit.ExtensionMethods.CollectionExtensionMethods;
 
     public class ContentLogging : ApplicationEventHandler
     {

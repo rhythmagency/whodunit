@@ -1,4 +1,4 @@
-﻿namespace Whodunit.app.ExtensionMethods
+﻿namespace Whodunit.ExtensionMethods
 {
 
     //  Namespaces.

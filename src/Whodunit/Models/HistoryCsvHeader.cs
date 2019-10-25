@@ -1,4 +1,4 @@
-﻿namespace Whodunit.app.Models
+﻿namespace Whodunit.Models
 {
 
     /// <summary>

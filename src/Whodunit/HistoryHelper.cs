@@ -1,4 +1,4 @@
-﻿namespace Whodunit.app
+﻿namespace Whodunit
 {
 
     // Namespaces.
@@ -7,7 +7,7 @@
     using Umbraco.Core;
     using Umbraco.Core.Logging;
     using Umbraco.Core.Persistence;
-    using Whodunit.app.Models;
+    using Whodunit.Models;
 
 
     /// <summary>

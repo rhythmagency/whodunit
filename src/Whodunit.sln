@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whodunit.app", "Whodunit.app\Whodunit.app.csproj", "{143BADC3-A677-4391-BC26-F8FB90EFBD68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whodunit", "Whodunit\Whodunit.csproj", "{143BADC3-A677-4391-BC26-F8FB90EFBD68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whodunit.test", "Whodunit.test\Whodunit.test.csproj", "{CCE90E80-8C43-45C5-A42C-D0D7DFB15D8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "TestSite\TestSite.csproj", "{CCE90E80-8C43-45C5-A42C-D0D7DFB15D8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC38577A-EC1A-4696-B5F5-9E15552AD541}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-﻿namespace Whodunit.app.Helpers
+﻿namespace Whodunit.Helpers
 {
 
     // Namespaces.

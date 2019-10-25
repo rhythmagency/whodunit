@@ -1,4 +1,4 @@
-﻿namespace Whodunit.app.Install.Package_Actions
+﻿namespace Whodunit.Install.Package_Actions
 {
 
     // Namespaces.

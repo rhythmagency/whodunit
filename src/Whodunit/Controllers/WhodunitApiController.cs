@@ -1,4 +1,4 @@
-﻿namespace Whodunit.app.Controllers
+﻿namespace Whodunit.Controllers
 {
 
     // Namespaces.
