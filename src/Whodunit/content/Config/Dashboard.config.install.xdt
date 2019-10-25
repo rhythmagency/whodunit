@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dashBoard xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
 
-  <!-- Add the Whodunit dashboard if it is missing. -->
   <section alias="WhodunitSection" xdt:Locator="Match(alias)" xdt:Transform="InsertIfMissing">
     <areas>
       <area>content</area>

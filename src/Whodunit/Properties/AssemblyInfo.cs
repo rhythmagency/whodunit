@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Whodunit.app")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Whodunit")]
+[assembly: AssemblyDescription("An Umbraco plugin which adds a changelog dashboard.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Whodunit.app")]
-[assembly: AssemblyCopyright("Copyright © 2016")]
+[assembly: AssemblyCompany("Rhythm")]
+[assembly: AssemblyProduct("Whodunit")]
+[assembly: AssemblyCopyright("Copyright © Rhythm 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.2.4.0")]
-[assembly: AssemblyFileVersion("0.2.4.0")]
+[assembly: AssemblyVersion("0.2.5.0")]
+[assembly: AssemblyFileVersion("0.2.5.0")]

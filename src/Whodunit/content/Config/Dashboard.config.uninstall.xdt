@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dashBoard xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
 
-  <!-- Remove the Whodunit dashboard if it exists. -->
   <section alias="WhodunitSection" xdt:Locator="Match(alias)" xdt:Transform="Remove">
   </section>
 
