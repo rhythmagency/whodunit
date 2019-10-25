@@ -1,53 +1,13 @@
-# Node modules.
-node_modules/
-
-# Folder created by NuGet.
-**/App_Data/NuGetBackup/
-
-# Visual Studio packages.
-**/packages/*/
-
-# Visual Studio build artifacts.
-bin/
-obj/
-
-# Visual Studio solution user options.
+# user configuration
 *.suo
 .vs/
-
-# Visual Studio project user options.
 *.csproj.user
-
-# WebStorm.
 .idea
 
-# Sample website files/folders.
-**/Whodunit.test/bin/
-**/Whodunit.test/obj/
-**/Whodunit.test/umbraco/
-**/Whodunit.test/umbraco_client/
-**/Whodunit.test/App_Data/TEMP/
-**/Whodunit.test/App_Data/Logs/
-**/Whodunit.test/App_Data/packages/
-**/Whodunit.test/App_Data/Models/
-**/Whodunit.test/media/
-**/Whodunit.test/App_Plugins/
-**/Whodunit.test/scripts/
-**/Whodunit.test/js/
-**/Whodunit.test/css/
-**/Whodunit.test/App_Data/access.config
-**/Whodunit.test/App_Data/umbraco.config
-**/Whodunit.test/App_Data/Umbraco.sdf
-**/Whodunit.test/App_Data/cache/
-**/Whodunit.test/Views/*
-**/Whodunit.test/Views/Partials/*
-**/WhodunitTemp/
-**/GeneratedReports/
+# build artifacts
+node_modules/
+NuGetBackup/
+src/packages/
 
-# Allow some views.
-!**/Website/Views/Partials/
-!**/Website/Views/Partials/Grid/
-!**/Website/Views/Partials/Grid/Editors/
-
-# Grunt build artifacts.
+# build output
 dist/

@@ -1,0 +1,17 @@
+/App_Data/cache/
+/App_Data/Logs/
+/App_Data/TEMP/
+/App_Data/Models/
+/App_Data/packages/
+/App_Data/access.config
+/App_Data/umbraco.config
+/App_Data/Umbraco.sdf
+/App_Plugins/
+/bin/
+/css/
+/js/
+/media/
+/obj/
+/scripts/
+/umbraco/
+/umbraco_client/
