@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Whodunit")]
-[assembly: AssemblyDescription("An Umbraco plugin which adds a changelog dashboard.")]
+[assembly: AssemblyDescription("An Umbraco plugin which provides a changelog dashboard.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Rhythm")]
 [assembly: AssemblyProduct("Whodunit")]

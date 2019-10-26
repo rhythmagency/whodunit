@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Initial NuGet release.</releaseNotes>
     <title>$title$</title>
     <description>$description$</description>
     <authors>rhythmagency</authors>
@@ -13,7 +13,7 @@
     <icon>rhythm-icon.png</icon>
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <tags>.NET web Umbraco CodeMirror</tags>
+    <tags>.NET web Umbraco</tags>
     <projectUrl>https://github.com/rhythmagency/whodunit</projectUrl>
     <dependencies>
       <dependency id="UmbracoCms.Core" version="7.4.1" />
