@@ -6,6 +6,7 @@
 /App_Data/access.config
 /App_Data/umbraco.config
 /App_Plugins/
+/GeneratedReports/
 /bin/
 /css/
 /js/
