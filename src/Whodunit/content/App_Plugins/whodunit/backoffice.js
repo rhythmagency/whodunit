@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    // SUPPORT FUNCTIONS
+
     // Pads a number with leading zeros.
     function padNumber(num, zeros) {
         var strNum = num.toString();
@@ -51,8 +53,10 @@
         });
     }
 
-    // The main controller function.
-    function mainFunction($scope, $routeParams, $http) {
+    // ANGULAR COMPONENTS
+
+    // dashboard controller function.
+    const whodunitController = function ($scope, $routeParams, $http, whodunitResource) {
 
         // Variables.
         var now = (new Date(Date.now()));
@@ -93,9 +97,9 @@
             generateCsv($scope, $http);
         };
 
-    }
+    };
 
     // Register controller.
-    angular.module("umbraco").controller("Rhythm.WhodunitController", mainFunction);
+    angular.module("umbraco").controller("whodunitController", whodunitController);
 
 })();

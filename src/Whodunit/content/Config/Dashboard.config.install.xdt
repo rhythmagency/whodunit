@@ -6,7 +6,7 @@
       <area>content</area>
     </areas>
     <tab caption="History Report">
-      <control>/App_Plugins/whodunit/control.html</control>
+      <control>/App_Plugins/whodunit/dashboard-content.html</control>
     </tab>
   </section>
 
