@@ -9,7 +9,7 @@
     /// <summary>
     /// The request model when generating a CSV of history information.
     /// </summary>
-    public class GetHistoryModel
+    public class GenerateCsvModel
     {
 
         #region Properties

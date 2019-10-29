@@ -22,41 +22,12 @@
         return combined;
     }
 
-    // Parses a date, such as "2015-01-01".
-    function parseDate(strDate) {
-        var firstPos = strDate.indexOf("-");
-        var secondPos = strDate.substring(firstPos + 1).indexOf("-") + firstPos + 1;
-        var strYear = strDate.substring(0, firstPos);
-        var strMonth = strDate.substring(firstPos + 1, secondPos);
-        var strDay = strDate.substring(secondPos + 1);
-        var year = parseInt(strYear, 10);
-        var month = parseInt(strMonth, 10);
-        var day = parseInt(strDay, 10);
-        return new Date(Date.UTC(year, month - 1, day));
-    }
 
-    // Generates the CSV.
-    function generateCsv($scope, $http) {
-        $scope.showLink = false;
-        $scope.disableGenerateButton = true;
-        var strStartDate = $scope.startDate.value;
-        var startDate = parseDate(strStartDate);
-        var strEndDate = $scope.endDate.value;
-        var endDate = parseDate(strEndDate);
-        $http.post("/umbraco/backoffice/whodunit/whodunitapi/gethistory", {
-            startDate: startDate,
-            endDate: endDate
-        }).success(function (data) {
-            $scope.csvUrl = JSON.parse(data);
-            $scope.showLink = true;
-            $scope.disableGenerateButton = false;
-        });
-    }
 
     // ANGULAR COMPONENTS
 
     // dashboard controller function.
-    const whodunitController = function ($scope, $routeParams, $http, whodunitResource) {
+    const whodunitController = function ($scope, $routeParams, whodunitResource) {
 
         // Variables.
         var now = (new Date(Date.now()));
@@ -92,14 +63,7 @@
             config: dateConfig
         };
 
-        // Scope functions.
-        $scope.generateCsv = function () {
-            generateCsv($scope, $http);
-        };
-
     };
-
-    // Register controller.
     angular.module("umbraco").controller("whodunitController", whodunitController);
 
 })();

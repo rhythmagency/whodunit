@@ -1,11 +1,14 @@
-﻿namespace Whodunit.Controllers
-{
+﻿namespace Whodunit.Controllers {
 
     // Namespaces.
     using Models;
     using System;
     using System.Data.SqlTypes;
     using System.IO;
+    using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
     using System.Web;
     using Umbraco.Core;
     using Umbraco.Web.Mvc;
@@ -16,8 +19,7 @@
     /// API controller for history information.
     /// </summary>
     [PluginController("Whodunit")]
-    public class WhodunitApiController : UmbracoAuthorizedApiController
-    {
+    public class WhodunitApiController : UmbracoAuthorizedApiController {
 
         #region Methods
 
@@ -31,8 +33,7 @@
         /// The path to the CSV file of history information.
         /// </returns>
         [System.Web.Http.HttpPost]
-        public string GetHistory(GetHistoryModel model)
-        {
+        public HttpResponseMessage DownloadCsv(GenerateCsvModel model) {
 
             // Variables.
             var start = model.StartDate.HasValue
@@ -41,52 +42,48 @@
             var stop = model.EndDate.HasValue
                 ? model.EndDate.Value.AddDays(1)
                 : SqlDateTime.MaxValue.Value;
-            var request = HttpContext.Current.Request;
-            var trimPath = request.MapPath("~");
-            var basePath = request.MapPath("~/GeneratedReports");
-            var filename = Guid.NewGuid().ToString("N") + ".csv";
-            var filePath = Path.Combine(basePath, filename);
-            var config = new CsvHelper.Configuration.CsvConfiguration()
-            {
+
+            // Get history items.
+            var items = HistoryHelper.GetHistoryItems(start, stop);
+
+            var config = new CsvHelper.Configuration.CsvConfiguration() {
                 HasHeaderRecord = true,
                 QuoteAllFields = true
             };
 
 
-            // Get history items.
-            var items = HistoryHelper.GetHistoryItems(start, stop);
-
-
-            // Ensure folder exists.
-            if (!Directory.Exists(basePath))
-            {
-                Directory.CreateDirectory(basePath);
-            }
-
-
-            // Store to CSV.
-            using (var textWriter = File.CreateText(filePath))
-            {
-                using (var writer = new CsvHelper.CsvWriter(textWriter, config))
-                {
-                    writer.WriteHeader<HistoryCsvHeader>();
-                    foreach (var item in items)
-                    {
-                        writer.WriteField(item.Timestamp.ToString());
-                        writer.WriteField(item.Message);
-                        writer.NextRecord();
+            // write CSV data to memory stream
+            using (var stream = new MemoryStream()) {
+                using (var writer = new StreamWriter(stream, Encoding.UTF8, 1024, true)) {
+                    using (var csvWriter = new CsvHelper.CsvWriter(writer, config)) {
+                        csvWriter.WriteHeader<HistoryCsvHeader>();
+                        foreach (var item in items) {
+                            csvWriter.WriteField(item.Timestamp.ToString());
+                            csvWriter.WriteField(item.Message);
+                            csvWriter.NextRecord();
+                        }
                     }
                 }
+
+                stream.Seek(0, SeekOrigin.Begin);
+
+                return CreateFileResponse(
+                    stream.ToArray(),
+                    $"site-activity_{start.ToString("yyyy-MM-dd")}_{stop.ToString("yyyy-MM-dd")}.csv",
+                    "text/csv"
+                );
             }
+        }
 
+        #endregion
 
-            // Return a path that the website can link to.
-            var relativePath = filePath.InvariantStartsWith(trimPath)
-                ? filePath.Substring(trimPath.Length)
-                : filePath;
-            relativePath = "/" + relativePath.Replace(@"\", @"/");
-            return relativePath;
+        #region helpers
 
+        private static HttpResponseMessage CreateFileResponse(byte[] content, string filename, string contentType) {
+            var result = new HttpResponseMessage(HttpStatusCode.OK) { Content = new ByteArrayContent(content) };
+            result.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment") { FileName = filename };
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+            return result;
         }
 
         #endregion
